@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import Reducer from './Redux/Reducer';
 
+// create globale store with create store as fucntion
+const globalStore=createStore(Reducer)
+// putting the component in provider will make the component a global store
 ReactDOM.render(
-  <React.StrictMode>
+ <Provider store={globalStore}>
     <App />
-  </React.StrictMode>,
+    </Provider>
+ ,
   document.getElementById('root')
 );
 
